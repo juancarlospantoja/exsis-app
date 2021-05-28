@@ -1,0 +1,17 @@
+<p-panel header="Asignaturas">
+	<p-table [value]="asignaturas">
+		<ng-template pTemplate="header">
+			<tr>
+				<th pSortableColumn="id">Codigo <p-sortIcon field="id"></p-sortIcon>
+				<th pSortableColumn="grado">Nombre <p-sortIcon field="grado"></p-sortIcon>
+				</th>
+			</tr>
+		</ng-template>
+		<ng-template pTemplate="body" let-asignaturas>
+			<tr>
+				<td>{{asignaturas.id}}</td>
+				<td>{{asignaturas.nombre}}</td>				
+			</tr>
+		</ng-template>
+	</p-table>
+</p-panel>

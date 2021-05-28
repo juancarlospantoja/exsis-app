@@ -1,0 +1,58 @@
+<p-table #dt [value]="infoPer">
+    <ng-template pTemplate="header">
+        <tr>
+            <th pSortableColumn="NOMBRE">Docente</th>
+            <th pSortableColumn="ASIGNATURA">Asignatura <p-sortIcon field="asignatura"></p-sortIcon>
+            </th>
+            <th pSortableColumn="CURSO">Curso <p-sortIcon field="curso"></p-sortIcon>
+            </th>
+            <th>Estudiantes</th>
+        </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-curso>
+        <tr>
+            <td>{{curso.NOMBRE}}</td>
+            <td>{{curso.ASIGNATURA}}</td>
+            <td>{{curso.CURSO}}</td>
+            <td> <a class="nav-link" title="Ver estudiantes curso">
+                    <i class="fa fa-list nav-icon" (click)="getEstudiantesCurso(curso); lgModal.show()"></i>
+                </a>
+            </td>
+        </tr>
+    </ng-template>
+</p-table>
+
+<div bsModal #lgModal="bs-modal" class="modal fade" role="dialog" aria-labelledby="dialog-sizes-name1">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <label style="font-family: 'Open Sans', 'Helvetica Neue', sans-serif;">
+                    Asignatura: {{infoCurso.ASIGNATURA}}<br />
+                    Docente: {{infoCurso.NOMBRE}}<br />                    
+                    Curso: {{infoCurso.CURSO}}
+                </label>
+                <button type="button" class="close pull-right" (click)="lgModal.hide()" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <p-table [value]="estudianteCurso" >
+                    <ng-template pTemplate="header">
+                        <tr>
+                            <th >Codigo</th>
+                            <th pSortableColumn="ESTUDIANTE">Estudiante <p-sortIcon field="ESTUDIANTE"></p-sortIcon>
+                            </th>
+                        </tr>
+                    </ng-template>
+                    <ng-template pTemplate="body" let-estudianteCurso>
+                        <tr>
+                            <td>{{estudianteCurso.ID_ESTUDIANTE}}</td>
+                            <td>{{estudianteCurso.ESTUDIANTE}}</td>
+                            
+                        </tr>
+                    </ng-template>
+                </p-table>
+            </div>
+        </div>
+    </div>
+</div>

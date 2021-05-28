@@ -1,0 +1,73 @@
+<p-panel header="Cursos">
+	<div class='pull-right'>
+		<button class="btn btnSave ng-binding">
+			<button type="submit" class="btn btn-success pull-right" (click)="addCurso.show()">Agregar cursos</button>
+		</button>
+	</div>
+	<br>
+	<p-table [value]="cursos">
+		<ng-template pTemplate="header">
+			<tr>
+				<th pSortableColumn="id">Codigo <p-sortIcon field="id"></p-sortIcon>
+				<th pSortableColumn="grado">Grado <p-sortIcon field="grado"></p-sortIcon>
+				</th>
+				<th pSortableColumn="salon">Grupo <p-sortIcon field="salon"></p-sortIcon>
+				</th>
+			</tr>
+		</ng-template>
+		<ng-template pTemplate="body" let-cursos>
+			<tr>
+				<td>{{cursos.id}}</td>
+				<td>{{cursos.grado}}</td>
+				<td>{{cursos.salon}}</td>
+			</tr>
+		</ng-template>
+	</p-table>
+</p-panel>
+
+<div bsModal #addCurso="bs-modal" class="modal fade" role="dialog" aria-labelledby="dialog-sizes-name1">
+	<div class="modal-dialog modal-lg">
+		<div class="modal-content">
+			<div class="modal-header">
+				<label style="font-family: 'Open Sans', 'Helvetica Neue', sans-serif;">
+					Colegio Olimpo<br />
+				</label>
+				<button type="button" class="close pull-right" (click)="addCurso.hide()" aria-label="Close">
+					<span aria-hidden="true">&times;</span>
+				</button>
+			</div>
+			<div class="modal-body">
+				<div class="col-sm-8">
+					<form [formGroup]="formAdd" class="form-vertical">
+						<div class="row">
+							<div class="col-sm-6">
+								<div class="form-group">
+									<label>Grado</label>
+									<input formControlName="grado" name="grado" class="form-control">
+								</div>
+							</div>
+							<div class="col-sm-6">
+								<div class="form-group">
+									<label>Salon</label>
+									<input formControlName="salon" name="salon" class="form-control">
+								</div>
+							</div>
+						</div>
+					</form>					
+				</div>
+			</div>
+			<div class="modal-footer">
+				<div class="pull-right">
+				  <button type="button" class="btn btnSave" >
+					<i class="fa fa-check-circle iconAdd" (click)="btnAdd();" aria-hidden="true"></i>
+					Crear
+				  </button>
+				  <button type="button" class="btn btnCancel" (click)="addCurso.hide()">
+					<i class="fa fa-times-circle iconCan" aria-hidden="true"></i>
+					Cancelar
+				  </button>
+				</div>
+			  </div>
+		</div>
+	</div>
+</div>

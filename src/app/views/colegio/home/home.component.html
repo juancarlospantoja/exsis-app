@@ -1,0 +1,10 @@
+<p-panel header="Home">
+	<div *ngFor="let noticia of noticias">
+		<p-card>
+			<strong>{{noticia.title}}</strong>
+			<br> <br>
+			<div>{{noticia.body}}</div>
+		</p-card>
+		<br> <br>
+	</div>
+</p-panel>
